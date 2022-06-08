@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer>
 {
-    // SELECT * FROM TRANSACTIONS WHERE USER_ID = ?;
+    // select * from transactions where user_id = ?;
     List<Transaction> findAllByUserID(Integer userID);
 }

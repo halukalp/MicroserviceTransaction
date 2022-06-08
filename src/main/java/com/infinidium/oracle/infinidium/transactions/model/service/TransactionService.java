@@ -16,7 +16,7 @@ public class TransactionService extends AbstractTransactionService
     }
 
     @Override
-    public List<Transaction> getAll()
+    public List<Transaction> findAll()
     {
         return repository.findAll();
     }
@@ -31,7 +31,7 @@ public class TransactionService extends AbstractTransactionService
         catch (IllegalArgumentException e)
         {
             Util.showExceptionMessage(e);
-            return null;
+            return new Transaction();
         }
     }
 

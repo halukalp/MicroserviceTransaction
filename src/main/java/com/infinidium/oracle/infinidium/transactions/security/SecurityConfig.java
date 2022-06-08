@@ -8,23 +8,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-// Web tabanli guvenlik saglamak icin WebSecurityConfigurerAdapter kullanildi.
-@EnableWebSecurity
+
+@EnableWebSecurity // web tabanlı güvenlik sağlamak için birlikte çalışıyorlar WebSecurityConfigurerAdapter ile
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
-    @Value("${service.security.secure-key-username}")
-    private String SECURE_KEY_USERNAME;
-
     @Value("${service.security.secure-key-password}")
     private String SECURE_KEY_PASSWORD;
 
+    @Value("${service.security.secure-key-username}")
+    private String SECURE_KEY_USERNAME;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-        super.configure(auth);
 
         PasswordEncoder encoder = new BCryptPasswordEncoder();
+
 
         auth.inMemoryAuthentication()
                 .passwordEncoder(encoder)
@@ -34,10 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception
+    protected void configure(HttpSecurity http) throws Exception
     {
-        super.configure(httpSecurity);
+        super.configure(http);
 
-        httpSecurity.csrf().disable();
+        http.csrf().disable();
     }
 }
