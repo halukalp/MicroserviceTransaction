@@ -19,9 +19,9 @@ public class TransactionController
 
     // api/transaction/userID
     @GetMapping("{userID}")
-    public ResponseEntity<List<Transaction>> getAllByUser(@PathVariable Integer userID)
+    public ResponseEntity<List<Transaction>> getTransactionOfUser(@PathVariable Integer userID)
     {
-        return ResponseEntity.ok( service.findAllByUserID(userID));
+        return ResponseEntity.ok( service.findAllTransactionsOfUser(userID));
     }
 
     // api/transaction

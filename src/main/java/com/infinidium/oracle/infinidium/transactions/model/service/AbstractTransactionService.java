@@ -11,5 +11,5 @@ public abstract class AbstractTransactionService implements EntityService<Transa
     @Autowired
     protected TransactionRepository repository;
 
-    public abstract List<Transaction> findAllByUserID(Integer userID);
+    public abstract List<Transaction> findAllTransactionsOfUser(Integer userID);
 }
